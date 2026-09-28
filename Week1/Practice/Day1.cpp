@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Map.h"
 #include "Target.h"
+#include <Zombie.h>
 
 void Day1::PartA_1_1()
 {
@@ -262,6 +263,10 @@ void Day1::PartA_1_3()
 			}
 			player.MoveRight();
 
+			Zombie zeek(&engine, 1.0f, 3, 4);
+			int zX, zY;
+			zeek.GetPosition(zX, zY);
+			std::cout << zX << ", " << zY << "\n";
 
 			while (!quit)
 			{
@@ -293,6 +298,18 @@ void Day1::PartA_1_3()
 //
 // Part A-2.2: create the DEFINITION for CreateTargets_PartA_2
 //
+std::vector<Target> Day1::CreateTargets_PartA_2(int mapSize, int colorRange)
+{
+	std::vector<Target> targets;
+	for (int i = 0; i < 10; i++)
+	{
+		Target block;
+		block.col = rand() % mapSize;
+		block.row = rand() % mapSize;
+		targets.push_back(block);
+	}
+	return targets;
+}
 
 void Day1::PartA_2()
 {
@@ -339,6 +356,7 @@ void Day1::PartA_2()
 		// Part A-2.3: Call CreateTargets_PartA_2 and store the returned vector into the "targets" variable.
 		//
 		std::vector<Target> targets;
+		targets = CreateTargets_PartA_2(mapSize, colorRange);
 
 		float scale = 0.25f;
 		Player player(&engine, scale, 1, 1);

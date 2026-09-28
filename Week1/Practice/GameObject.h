@@ -22,6 +22,9 @@ public:
 
 	int Size() const { return static_cast<int>(width_ * scale_); }
 
+	//a declaration
+	void GetPosition(int& x, int& y);
+
 	virtual void Render() const;
 protected:
 	virtual void FreeResources();

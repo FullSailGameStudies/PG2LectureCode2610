@@ -57,3 +57,10 @@ void GameObject::Render() const
 {
 	texture_->Render(static_cast<int>(xPosition_ * width_ * scale_), static_cast<int>(yPosition_ * width_ * scale_), scale_);
 }
+
+//GetPosition Defintion
+void GameObject::GetPosition(int& x, int& y)
+{
+	x = xPosition_;
+	y = yPosition_;
+}

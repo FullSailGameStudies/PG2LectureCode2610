@@ -24,6 +24,9 @@ int main(int argc, char* args[])
 		"12. Part C-2: Copying Vectors\n",
 		"13. Exit" };
 
+	std::vector<int> nummbers{ 1,2,3,4,5 };
+	int numberOfOptions = menuOptions.size();
+	int nums            = nummbers.size();
 
 	do
 	{
@@ -42,6 +45,8 @@ int main(int argc, char* args[])
 			//  Experiment with changing the colors.
 			//  Open the Console.h file (look in Misc/Console in Solution Explorer) to see how the methods are declared.
 			//
+			Console::Write("DC is better than Marvel?!");
+			Console::WriteLine(" CORRECT!", ConsoleColor::Green);
 			break;
 		}
 		case 2:
@@ -71,6 +76,8 @@ int main(int argc, char* args[])
 			//	Print the name that the user enters.
 			//	Open the Input.h file(look in Misc / Input in Solution Explorer) to see how the GetString is declared.
 			//
+			std::string name = Input::GetString("What is your name? ");
+			std::cout << "Your name is " << name << "? I like that name.\n";
 			break;
 		}
 		case 6:
@@ -85,6 +92,8 @@ int main(int argc, char* args[])
 			//	Print the age that the user enters.
 			//	Open the Input.h file(look in Misc / Input in Solution Explorer) to see how the GetInteger is declared.
 			//
+			int age = Input::GetInteger("How old are you? ", 0, 120);
+			std::cout << "You are " << age << " years old.\n";
 			break;
 		}
 		case 7:

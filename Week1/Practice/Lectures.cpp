@@ -16,9 +16,18 @@ void Factor(double& valueToUpdate)//pass by reference (ALIAS)
 void Print(const std::vector<int>& nummies)//prevents a copy
 {
 	//range-based loop (foreach)
-	for (auto& numm : nummies)
+	//for (auto& numm : nummies)
+	//{
+	//	std::cout << numm << '\n';
+	//}
+	for (int i = 0; i < nummies.size(); i++)
 	{
-		std::cout << numm << '\n';
+
+	}
+	//iterator loop
+	for (auto it = nummies.begin();it != nummies.end();it++)
+	{
+		std::cout << *it << " ";
 	}
 }
 
@@ -26,11 +35,38 @@ const float PI = 3.1415F;
 
 int main(int argc, char* args[])
 {
-	std::vector<int> nummies;
-	for (int i = 0; i < 100; i++)
+	std::vector<int> nummies{ 1,2,2,2,3,4,4,5,6,6 };
+	std::vector<int>::iterator nummyIter = nummies.begin();
+	std::cout << *nummyIter << "\n";
+	//iterator + index will give an iterator to the item at index
+	//erase all the 2s
+	std::cout << "\nBEFORE:\n";
+	Print(nummies);
+
+	for (int i = 0; i < nummies.size();)
 	{
-		nummies.push_back(rand());
+		if (nummies[i] == 2) 
+			nummies.erase(nummies.begin() + i);
+		else 
+			i++;
 	}
+	//reverse for loop
+	for (int i = nummies.size() - 1; i >= 0; i--)
+	{
+		if (nummies[i] == 2)
+			nummies.erase(nummies.begin() + i);
+	}
+	for (auto it = nummies.begin(); it != nummies.end();)
+	{
+		if (2 == *it)
+		{
+			it = nummies.erase(it);
+		}
+		else it++;
+	}
+	std::cout << "\nAFTER:\n";
+	Print(nummies);
+
 	double value = 12;
 	Factor(value);
 	std::cout << value << "\n";

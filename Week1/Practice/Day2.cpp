@@ -7,10 +7,36 @@
 //
 // Part B-1.1: Add a method definition for SpawnZombies
 //
+void Day2::SpawnZombies(PG2Graphics& engine, std::vector<Zombie>& zeeks,const Player& playa) const
+{
+	int pX = playa.GetXPosition();
+	int pY = playa.GetYPosition();
+	int x, y;
+	for (int i = 0; i < 5; i++)
+	{
+		do
+		{
+			x = rand() % 10;
+			y = rand() % 10;
+		} while (x == pX and y == pY);
+
+		Zombie zeek(&engine, 0.5f, x, y);
+		zeeks.push_back(zeek);
+	}
+}
+
 
 //
 // Part B-2.1: Add a method definition for RenderZombies
 //
+void Day2::RenderZombies(const std::vector<Zombie>& zeeks) const
+{
+	for (const Zombie& zeek : zeeks)
+	{
+		zeek.Render();
+	}
+}
+
 
 //
 // Part B-3.1: Add a method definition for EraseZombies
@@ -92,6 +118,7 @@ void Day2::PartB(int option)
 							//
 							// Part B-1.3 Call SpawnZombies
 							//
+							SpawnZombies(engine, mobs, player);
 						}
 					}
 				}
@@ -103,6 +130,7 @@ void Day2::PartB(int option)
 				//
 				// Part B-2.3 call RenderZombies
 				//
+				RenderZombies(mobs);
 
 
 				player.Render();
@@ -113,22 +141,4 @@ void Day2::PartB(int option)
 		}
 	}
 	engine.Close();
-}
-
-void Day2::SpawnZombies(PG2Graphics& engine, std::vector<Zombie>& zeeks, Player& playa)
-{
-	int pX = playa.GetXPosition();
-	int pY = playa.GetYPosition();
-	int x, y;
-	for (int i = 0; i < 5; i++)
-	{
-		do
-		{
-			x = rand() % 10;
-			y = rand() % 10;
-		} while (x == pX and y == pY);
-
-		Zombie zeek(&engine, 0.5f, x, y);
-		zeeks.push_back(zeek);
-	}
 }

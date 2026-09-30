@@ -13,14 +13,16 @@ void Factor(double& valueToUpdate)//pass by reference (ALIAS)
 {
 	valueToUpdate *=(rand() % 100);
 }
-void Print(std::vector<int>& nummies)//prevents a copy
+void Print(const std::vector<int>& nummies)//prevents a copy
 {
 	//range-based loop (foreach)
-	for (int& numm : nummies)
+	for (auto& numm : nummies)
 	{
 		std::cout << numm << '\n';
 	}
 }
+
+const float PI = 3.1415F;
 
 int main(int argc, char* args[])
 {

@@ -4,8 +4,35 @@
 #include <Console.h>
 #include <Input.h>
 
+//pass by reference:
+//REASONS:
+//	1) we need to update a variable in a different scope
+//  2) we want to prevent a copy (for performance)
+//		- general rule: if the type is a class, pass by reference
+void Factor(double& valueToUpdate)//pass by reference (ALIAS)
+{
+	valueToUpdate *=(rand() % 100);
+}
+void Print(std::vector<int>& nummies)//prevents a copy
+{
+	//range-based loop (foreach)
+	for (int& numm : nummies)
+	{
+		std::cout << numm << '\n';
+	}
+}
+
 int main(int argc, char* args[])
 {
+	std::vector<int> nummies;
+	for (int i = 0; i < 100; i++)
+	{
+		nummies.push_back(rand());
+	}
+	double value = 12;
+	Factor(value);
+	std::cout << value << "\n";
+
 	Day2 day2;
 
 	int menuSelection = 0;

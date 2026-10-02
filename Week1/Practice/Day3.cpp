@@ -129,12 +129,16 @@ void Day3::PartC_2()
 		}
 		std::cout << "\nEnter a number to show the lights.\n";
 
-		std::vector<Target> lights, noGreens, noBlues, noReds, current;
+		std::vector<Target> lights;
 		MakeLights(lights);
-		current = lights;
+		std::vector<Target> noGreens(lights), noBlues(lights), noReds(lights), current(lights);
 		//
 		// Part C-2.1: copy the vector
 		//
+		RemoveLights(noBlues, ColorChannel::BLUE);
+		RemoveLights(noReds, ColorChannel::RED);
+		RemoveLights(noGreens, ColorChannel::GREEN);
+
 
 		Map map(engine.Renderer(), 10);
 
@@ -157,15 +161,20 @@ void Day3::PartC_2()
 					{
 					case SDLK_KP_1:
 					case SDLK_1://noReds
+						//fall through
+						current = noReds;
 						break;
 					case SDLK_KP_2:
 					case SDLK_2://noGreens
+						current = noGreens;
 						break;
 					case SDLK_KP_3:
 					case SDLK_3://noBlues
+						current = noBlues;
 						break;
 					case SDLK_KP_4:
 					case SDLK_4://all
+						current = lights;
 						break;
 					case SDLK_KP_5:
 					case SDLK_5://exit

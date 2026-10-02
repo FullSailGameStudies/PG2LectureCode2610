@@ -37,13 +37,39 @@ void Print(const std::vector<int>& nummies)//prevents a copy
 
 const float PI = 3.1415F;
 
+void Info(const std::vector<int>& ints)
+{
+	//size() - # of items in the vector
+	//capacity() - length of the internal array
+	//size <= capacity
+	std::cout << ints.size() << " / " << ints.capacity() << "\n";
+}
+
 int main(int argc, char* args[])
 {
 	double dVal = 10;
 	Factor(dVal, 3);//fac = 3
 	Factor(dVal, 5);//fac = 5
 	Factor(dVal);
-	std::vector<int> nummies{ 1,2,2,2,3,4,4,5,6,6 };
+	std::vector<int> nummies;
+	nummies.reserve(10);//sets the capacity to 10
+	Info(nummies);//size: 0  capacity:
+	for (size_t i = 0; i < 10; i++)
+	{
+		nummies.push_back(i);
+		Info(nummies);
+	}
+
+	//3 ways to copy a vector
+	std::vector<int> nums2;
+	nums2.reserve(nummies.size());
+	for (int i = 0; i < nummies.size(); i++)
+	{
+		nums2.push_back(nummies[i]);
+	}
+	std::vector<int> nums3 = nummies;
+	std::vector<int> nums4(nummies);
+
 	std::vector<int>::iterator nummyIter = nummies.begin();
 	std::cout << *nummyIter << "\n";
 	//iterator + index will give an iterator to the item at index

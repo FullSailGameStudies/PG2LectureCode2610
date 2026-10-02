@@ -9,9 +9,13 @@
 //	1) we need to update a variable in a different scope
 //  2) we want to prevent a copy (for performance)
 //		- general rule: if the type is a class, pass by reference
-void Factor(double& valueToUpdate)//pass by reference (ALIAS)
+
+//default params must appear at the end of the param list
+void Factor(double& valueToUpdate, double fac = 0)//pass by reference (ALIAS)
 {
-	valueToUpdate *=(rand() % 100);
+	if (fac == 0)
+		fac = rand() % 100;
+	valueToUpdate *=(fac);
 }
 void Print(const std::vector<int>& nummies)//prevents a copy
 {
@@ -35,6 +39,10 @@ const float PI = 3.1415F;
 
 int main(int argc, char* args[])
 {
+	double dVal = 10;
+	Factor(dVal, 3);//fac = 3
+	Factor(dVal, 5);//fac = 5
+	Factor(dVal);
 	std::vector<int> nummies{ 1,2,2,2,3,4,4,5,6,6 };
 	std::vector<int>::iterator nummyIter = nummies.begin();
 	std::cout << *nummyIter << "\n";

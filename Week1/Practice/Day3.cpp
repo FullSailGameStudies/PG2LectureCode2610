@@ -91,6 +91,10 @@ void Day3::PartC_1()
 			//
 			// Part C-1.2: call the method
 			//
+			if (channel == ColorChannel::RED)
+				ShiftColor(lights, offsets);
+			else
+				ShiftColor(lights, offsets, channel);
 
 		}
 	}

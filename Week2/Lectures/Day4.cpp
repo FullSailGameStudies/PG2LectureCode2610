@@ -66,8 +66,25 @@ void Day4::RecursionExample()
 //
 // Part A-1.1
 //
+void Bats(int i = 0)
+{
+	if(i < 100)
+	{
+		std::cout << (char)78 << (char)65 << ' ';
+		//i++ vs ++i
+		//i++ - post-increment
+		//		store the current value of i
+		//		increment i
+		//		return the old value
+		//++i - pre-increment
+		//	a little faster than post-increment
+		Bats(++i);
+		
+	}
+}
 void Day4::PartA_1_1()
 {
+	Bats();
 	char c[] = { '\n', 66, 65, 84, 77, 65, 78, 33, 33 };
 	for (auto ch : c) std::cout << ch;
 

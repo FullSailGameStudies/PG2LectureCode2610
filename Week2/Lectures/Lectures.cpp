@@ -4,6 +4,8 @@
 #include "Day5.h"
 #include "Day6.h"
 #include <Input.h>
+#include <map>
+#include <iomanip> //lets us add some formatting commands to cout
 
 void SomeFunc(int someData)
 {
@@ -24,7 +26,7 @@ int main(int argc, char* args[])
 	{
 		std::cout << i << " ";
 	}
-	SomeFunc(10);
+	//SomeFunc(10);
 	srand(static_cast<unsigned int>(time(NULL)));
 
 	std::string hello = "Hello Week 2!";
@@ -33,6 +35,90 @@ int main(int argc, char* args[])
 		Console::Write(ch, (ConsoleColor)(rand() % 7 + 1));
 	}
 	std::cout << "\n";
+
+	//maps:
+	// keys must be unique
+	// 
+	//storing menu items and their prices
+	//menu items are string (the name)
+	//prices are floats
+	std::map<std::string, float> menu;
+
+	//2 ways to add data to a map
+	// 1) "easy" way
+	//		map[key] = value;
+	menu["lemonade"] = 3.25f;
+	menu["chocolate chip cookies"] = 3.50f;
+	menu["sushi"] = 11.99f;
+	menu["sushi"] = 9.99f;//overwrites any existing value
+
+	// 2) "not-as-easy" way
+	//	  map.insert(key-value-pair);
+	std::pair<std::string, float> itemToInsert = 
+		std::make_pair("pepperoni pizza", 19.99f);
+	menu.insert(itemToInsert);
+	//parts of a pair object:
+	//  first
+	//  second
+	itemToInsert.second = 14.99f;
+	std::pair<std::map<std::string,float>::iterator,bool> menuItemInserted = menu.insert(itemToInsert);//does NOT overwrite
+	if (menuItemInserted.second == false)
+	{
+		std::cout << itemToInsert.first << " is already on the menu. Do you want to update the price?\n";
+		auto& keyValuePair = *(menuItemInserted.first);
+	}
+
+	std::pair<std::string, float> chips =
+		std::make_pair("chips", 1.99f);
+	menu.insert(chips);
+
+
+	//accessing data in a map
+	//  map[key] to access the value associated with the key
+	std::string itemToAccess = "pepperoni pizza";
+	//float priceOfItem = menu[itemToAccess];
+	//std::cout << itemToAccess << " costs " << priceOfItem << "\n";
+
+	//use map.find(key) to see if the key-value pair is in the map
+	std::map<std::string,float>::iterator itemFoundIterator = menu.find(itemToAccess);
+
+	//if the key is NOT found, the iterator equals the end()
+	if (itemFoundIterator == menu.end()) //not found
+	{
+		std::cout << itemToAccess << " is not on the menu. Try McDonald's\n";
+	}
+	else
+	{
+		//the `->` operator goes to the object the iterator points to
+		std::cout << itemToAccess << " costs " << itemFoundIterator->second << "\n";
+	}
+
+	std::cout << "\n\nPG2 Cafe\n";
+	for (auto iter = menu.begin(); iter != menu.end(); iter++)
+	{
+		//iterator points to a key-value pair object (first,second)
+		//first is the key (name), second is the value (price)
+		std::cout << std::setw(7) << std::right << iter->second << " " ;
+		std::cout << std::left << iter->first << "\n";
+	}
+	std::cout << "\n";
+
+	std::cout << "\n\nPG2 Cafe\n";
+	for (auto& kvp : menu)
+	{
+		std::cout << std::setw(7) << std::right << kvp.second << " ";
+		std::cout << std::left << kvp.first << "\n";
+	}
+
+	//use structured bindings to make it more readable
+	std::cout << "\n\nPG2 Cafe\n";
+	for (auto& [itemName,itemPrice] : menu)
+	{
+		std::cout << std::setw(7) << std::right << itemPrice << " ";
+		std::cout << std::left << itemName << "\n";
+	}
+
+
 
 	int menuSelection = 0;
 	std::vector<std::string> menuOptions{

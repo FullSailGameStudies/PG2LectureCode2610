@@ -120,6 +120,33 @@ void Day5::PartB_2(int section)
 		//
 		// TODO: (Lecture) Part B-2.1 fill the std::map
 		// 
+		for (auto& light : allLights)
+		{
+			ColorChannel channel;
+			if (light.red > light.green and light.red > light.blue)
+				channel = ColorChannel::RED;
+			else if (light.green > light.red and light.green > light.blue)
+				channel = ColorChannel::GREEN;
+			else
+				channel = ColorChannel::BLUE;
+
+			auto groupIter = groupedColors.find(channel);
+			if (groupIter == groupedColors.end())
+			{
+				//create a vector with the light
+				//add the vector to the map for the channel
+				std::vector<Light> channelLights;
+				channelLights.push_back(light);
+
+				groupedColors[channel] = channelLights;
+			}
+			else
+			{
+				//iterator points to the key-value pair
+				std::vector<Light>& lights = groupIter->second;
+				lights.push_back(light);
+			}
+		}
 
 
 		switch (section)
@@ -133,6 +160,10 @@ void Day5::PartB_2(int section)
 			//
 			// TODO: (Lecture) Part B-2.2 loop over the std::map
 			//
+			for (auto& [channel,channelLights] : groupedColors)
+			{
+				grouper.DrawLights(screenMap, channelLights, columnRange, column, row);
+			}
 
 
 			//Update screen

@@ -75,7 +75,7 @@ int main(int argc, char* args[])
 
 	//accessing data in a map
 	//  map[key] to access the value associated with the key
-	std::string itemToAccess = "pepperoni pizza";
+	std::string itemToAccess = "sushi";
 	//float priceOfItem = menu[itemToAccess];
 	//std::cout << itemToAccess << " costs " << priceOfItem << "\n";
 
@@ -91,6 +91,11 @@ int main(int argc, char* args[])
 	{
 		//the `->` operator goes to the object the iterator points to
 		std::cout << itemToAccess << " costs " << itemFoundIterator->second << "\n";
+
+		//if you have an iterator, use the iterator
+		menu.erase(itemFoundIterator);//returns an iterator to the next item (for looping)
+
+		int numberErased = menu.erase("sushi");//pass in the key!!
 	}
 
 	std::cout << "\n\nPG2 Cafe\n";

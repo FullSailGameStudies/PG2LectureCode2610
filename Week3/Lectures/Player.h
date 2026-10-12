@@ -8,6 +8,33 @@ class Player
 //access modifiers: control what other code can see
 public:  // ALL code can see it
 
+	//constructors (ctors)
+	//  special functions to initialize your object
+	//	to make an instance of your class, you MUST call a ctor
+	//  IF you don't create a ctor, the compiler gives you a default ctor
+	//	a default ctor: a ctor w/out parameters
+	//  IF you DO create a ctor, the compiler's ctor is NOT CREATED
+	//  you can have as many of these as you need
+	//  they can have any access modifier
+	//	RULES:
+	//		cannot have any return type at all (not even void)
+	//		MUST be named the same as the class (casing included)
+	//use the member initialization list to initialize your fields
+	//it's the preferred way!
+	Player(const std::string& tag) :
+		//ALL fields are initialized HERE first
+		gamerTag_(tag),
+		level_(1)
+	{
+		//gamerTag_ = tag;
+	}
+	Player(const std::string& tag, int level) :
+		//ALL fields are initialized HERE first
+		gamerTag_(tag),
+		level_(level)
+	{
+	}
+
 	//getters (accessors)
 	//  return type matches the type of the field
 	//  usually no parameters

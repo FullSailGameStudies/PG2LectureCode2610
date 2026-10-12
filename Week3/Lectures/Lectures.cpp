@@ -9,7 +9,9 @@
 
 int main(int argc, char* args[])
 {
-	Player p1;
+	Player p1("BruceW", 100);//we call a ctor here
+	//p1.SetGamerTag("BruceW");
+	//p1.Level(100);
 	std::cout << p1.GetGamerTag() << " Level: " << p1.Level() << "\n";
 
 

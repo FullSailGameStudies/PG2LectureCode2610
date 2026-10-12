@@ -5,10 +5,17 @@
 #include "Day9.h"
 #include "Input.h"
 #include "Player.h"
+#include "Color.h"
 
 
 int main(int argc, char* args[])
 {
+	Color clr;
+	clr.red = 255;
+	clr.green = clr.blue = 0;
+	clr.alpha = 255;
+
+
 	Player p1("BruceW", 100);//we call a ctor here
 	//p1.SetGamerTag("BruceW");
 	//p1.Level(100);

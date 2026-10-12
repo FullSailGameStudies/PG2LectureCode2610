@@ -3,6 +3,7 @@
 #include "Console.h"
 #include "Input.h"
 #include <GameTextures.h>
+#include <Card.h>
 
 
 /*              CLASSESS
@@ -38,6 +39,78 @@
         protected: this class and all its descendent classes can see it
 
 */
+
+std::string ToString(CardSuit suit)
+{
+	switch (suit)
+	{
+	case Hearts:
+		return "Hearts";
+		break;
+	case Diamonds:
+		return "Diamonds";
+		break;
+	case Clubs:
+		return "Clubs";
+		break;
+	case Spades:
+		return "Spades";
+		break;
+	default:
+		break;
+	}
+	return "";
+}
+
+std::string ToString(CardFace face)
+{
+	std::string f = "";
+	switch (face)
+	{
+	case A:
+		f = "A";
+		break;
+	case Two:
+		f = "2";
+		break;
+	case Three:
+		f = "3";
+		break;
+	case Four:
+		f = "4";
+		break;
+	case Five:
+		f = "5";
+		break;
+	case Six:
+		f = "6";
+		break;
+	case Seven:
+		f = "7";
+		break;
+	case Eight:
+		f = "8";
+		break;
+	case Nine:
+		f = "9";
+		break;
+	case Ten:
+		f = "10";
+		break;
+	case Jack:
+		f = "J";
+		break;
+	case Queen:
+		f = "Q";
+		break;
+	case King:
+		f = "K";
+		break;
+	default:
+		break;
+	}
+	return f;
+}
 
 const int SCREEN_WIDTH = 1024;
 const int SCREEN_HEIGHT = 550;
@@ -103,6 +176,9 @@ void Day7::PartA_1()
 						//
 						// TODO: Part A-1.2 Create a Card object
 						//
+						Card cardyB(CardSuit::Diamonds, CardFace::Queen);
+						cardyB.Print();
+						std::cout << "Value: " << cardyB.Value() << "\n";
 
 
 						pos cardSize = GameTextures::CardSize(scale);
@@ -112,6 +188,7 @@ void Day7::PartA_1()
 						//
 						// TODO: Part A-1.3  call GameTextures::RenderImage with the Card object
 						//
+						GameTextures::RenderImage(ToString(cardyB.Face()), ToString(cardyB.Suit()), x, y, scale);
 
 
 						//Update screen

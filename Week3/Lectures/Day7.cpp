@@ -70,33 +70,6 @@ std::string ToString(CardFace face)
 	case A:
 		f = "A";
 		break;
-	case Two:
-		f = "2";
-		break;
-	case Three:
-		f = "3";
-		break;
-	case Four:
-		f = "4";
-		break;
-	case Five:
-		f = "5";
-		break;
-	case Six:
-		f = "6";
-		break;
-	case Seven:
-		f = "7";
-		break;
-	case Eight:
-		f = "8";
-		break;
-	case Nine:
-		f = "9";
-		break;
-	case Ten:
-		f = "10";
-		break;
 	case Jack:
 		f = "J";
 		break;
@@ -107,6 +80,7 @@ std::string ToString(CardFace face)
 		f = "K";
 		break;
 	default:
+		f = std::to_string(face);
 		break;
 	}
 	return f;

@@ -8,5 +8,7 @@ public:
 	{
 		//do NOT do what the base ctor does	
 	}
+
+	int Value() const override;
 };
 

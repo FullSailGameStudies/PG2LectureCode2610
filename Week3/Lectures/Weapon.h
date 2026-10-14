@@ -8,7 +8,9 @@ private:
 public:
 	Weapon(int range, int damage);
 
-	void showMe();
+	//OVERRIDING:
+	// 1) mark the base method as `virtual`
+	virtual void showMe() const;
 	int calcDamage();
 
 	int range() const

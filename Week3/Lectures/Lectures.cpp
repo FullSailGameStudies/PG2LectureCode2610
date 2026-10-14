@@ -9,15 +9,43 @@
 #include "Pistol.h"
 
 
+//overloads:
+//	the parameters must be different
+//	- either the number of params
+//  - or the types of the params
+int Add(int n1, int n2)
+{
+	return n1 + n2;
+}
+int Add(int n1, int n2, int n3)
+{
+	return n1 + n2 + n3;
+}
+float Add(float n1, float n2)
+{
+	return n1 + n2;
+}
+
 int main(int argc, char* args[])
 {
+	int sum = Add(5, 2);
+	sum = Add(5, 3, 10);
+	float sumF = Add(5.0f, 3.1f);
+
 	Color clr;
 	clr.red = 255;
 	clr.green = clr.blue = 0;
 	clr.alpha = 255;
 
 	Pistol pewpew(100,200,10,15);
+	Pistol p2(100, 200, 5, 15);
 	pewpew.calcDamage();
+	Pistol p3 = pewpew + p2;
+	Weapon wpn(10, 50);
+	wpn.showMe();
+	p3.showMe();
+	pewpew.showMe();
+	p2.showMe();
 
 
 	Player p1("BruceW", 100);//we call a ctor here

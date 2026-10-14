@@ -8,7 +8,7 @@ public:
 		: suit_(suit), face_(face)
 	{}
 
-	int Value() const;
+	virtual int Value() const;
 	void Print() const;
 
 	CardSuit Suit() const { return suit_; }
@@ -26,7 +26,7 @@ public:
 	}
 
 
-private:
+protected:
 	CardSuit suit_;
 	CardFace face_;
 };

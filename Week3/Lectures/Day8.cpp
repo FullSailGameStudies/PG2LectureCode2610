@@ -84,15 +84,13 @@ void Day8::PartB_1()
 						//
 						GameTextures::RenderImage(ToString(cardyB.Face()), ToString(cardyB.Suit()), x, y, scale);
 
-
-
-
 						//
 						// TODO: Part B-1.4 
 						// call the Print method
 						// call the Value method and print the value
 						//
-
+						cardyB.Print();
+						std::cout << "Value: " << cardyB.Value() << "\n";
 
 
 						//Update screen

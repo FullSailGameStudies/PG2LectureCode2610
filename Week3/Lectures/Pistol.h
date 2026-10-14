@@ -13,6 +13,16 @@ public:
 	
 	}
 
+	Pistol operator+(Pistol& other)  //pewpew.operator+(p2)
+	{
+		Pistol gun(range(), damage(), mNumRounds + other.mNumRounds, mMagCapacity);
+		return gun;
+	}
+
+	//OVERRIDING:
+	// 2) add a function w/ the same signature as the base
+	//`override` is optional but encouraged
+	void showMe() const override;
 
 	int NumRounds() const { return mNumRounds; }
 	int MagCapacity() const { return mMagCapacity; }

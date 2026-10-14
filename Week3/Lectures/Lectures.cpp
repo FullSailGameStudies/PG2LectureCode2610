@@ -6,6 +6,7 @@
 #include "Input.h"
 #include "Player.h"
 #include "Color.h"
+#include "Pistol.h"
 
 
 int main(int argc, char* args[])
@@ -14,6 +15,9 @@ int main(int argc, char* args[])
 	clr.red = 255;
 	clr.green = clr.blue = 0;
 	clr.alpha = 255;
+
+	Pistol pewpew(100,200,10,15);
+	pewpew.calcDamage();
 
 
 	Player p1("BruceW", 100);//we call a ctor here

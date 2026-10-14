@@ -40,51 +40,6 @@
 
 */
 
-std::string ToString(CardSuit suit)
-{
-	switch (suit)
-	{
-	case Hearts:
-		return "Hearts";
-		break;
-	case Diamonds:
-		return "Diamonds";
-		break;
-	case Clubs:
-		return "Clubs";
-		break;
-	case Spades:
-		return "Spades";
-		break;
-	default:
-		break;
-	}
-	return "";
-}
-
-std::string ToString(CardFace face)
-{
-	std::string f = "";
-	switch (face)
-	{
-	case A:
-		f = "A";
-		break;
-	case Jack:
-		f = "J";
-		break;
-	case Queen:
-		f = "Q";
-		break;
-	case King:
-		f = "K";
-		break;
-	default:
-		f = std::to_string(face);
-		break;
-	}
-	return f;
-}
 
 const int SCREEN_WIDTH = 1024;
 const int SCREEN_HEIGHT = 550;

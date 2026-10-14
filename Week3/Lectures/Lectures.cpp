@@ -26,8 +26,18 @@ float Add(float n1, float n2)
 	return n1 + n2;
 }
 
+void Counter()
+{
+	static int i = 0;//only initializes it the first time
+	std::cout << i << " ";
+	i++;
+}
 int main(int argc, char* args[])
 {
+	for (int i = 0; i < 10; i++)
+	{
+		Counter();
+	}
 	int sum = Add(5, 2);
 	sum = Add(5, 3, 10);
 	float sumF = Add(5.0f, 3.1f);
@@ -41,8 +51,8 @@ int main(int argc, char* args[])
 	Pistol p2(100, 200, 5, 15);
 	pewpew.calcDamage();
 	Pistol p3 = pewpew + p2;
-	Weapon wpn(10, 50);
-	wpn.showMe();
+	//Weapon wpn(10, 50);
+	//wpn.showMe();
 	p3.showMe();
 	pewpew.showMe();
 	p2.showMe();

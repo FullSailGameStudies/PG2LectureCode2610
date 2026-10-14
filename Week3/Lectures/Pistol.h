@@ -23,6 +23,7 @@ public:
 	// 2) add a function w/ the same signature as the base
 	//`override` is optional but encouraged
 	void showMe() const override;
+	int calcDamage() override;
 
 	int NumRounds() const { return mNumRounds; }
 	int MagCapacity() const { return mMagCapacity; }

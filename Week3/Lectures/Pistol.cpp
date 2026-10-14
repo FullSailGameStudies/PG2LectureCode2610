@@ -12,3 +12,8 @@ void Pistol::showMe() const
 	std::cout << "\t";//\t means tab   \n means newline
 	Weapon::showMe();
 }
+
+int Pistol::calcDamage()
+{
+	return Weapon::calcDamage();
+}

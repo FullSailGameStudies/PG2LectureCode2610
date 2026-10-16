@@ -35,6 +35,15 @@ public:  // ALL code can see it
 	{
 	}
 
+	//destructor
+	//	named the same as the class
+	//  no return type
+	//  no parameters
+	~Player()
+	{
+		//cleaning up resources
+	}
+
 	//getters (accessors)
 	//  return type matches the type of the field
 	//  usually no parameters

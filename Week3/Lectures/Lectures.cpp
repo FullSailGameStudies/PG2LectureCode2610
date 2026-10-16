@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Color.h"
 #include "Pistol.h"
+#include "Knife.h"
 
 
 //overloads:
@@ -34,6 +35,25 @@ void Counter()
 }
 int main(int argc, char* args[])
 {
+	//Weapon wpn = Pistol(100, 200, 10, 10);
+	std::vector<Weapon*> inventory;
+	//UPCASTING:
+	//	conversion from a DERIVED pointer to a BASE pointer
+	//	ALWAYS SAFE!!
+	//DOWNCASTING:
+	//	conversion from a BASE pointer to a DERIVED pointer
+	//  NOT SAFE!!! you must check if it worked
+	inventory.push_back(new Pistol(100, 200, 10, 10));
+	inventory.push_back(new Pistol(200, 400, 10, 10));
+	inventory.push_back(new Knife(3, 50, true));
+	std::cout << "John Wick's Inventory:\n";
+	for (int i = 0; i < inventory.size(); i++)
+	{
+		//dynamic polymorphism (runtime)
+		inventory[i]->showMe();
+	}
+
+
 	for (int i = 0; i < 10; i++)
 	{
 		Counter();
@@ -63,6 +83,31 @@ int main(int argc, char* args[])
 	//p1.Level(100);
 	std::cout << p1.GetGamerTag() << " Level: " << p1.Level() << "\n";
 
+	{
+		Player p3("BruceW", 100);
+	}//p3's destructor gets called here
+
+	{
+		Player* pPlaya = nullptr;
+		pPlaya = &p1;
+		pPlaya->Level();
+		(*pPlaya).Level();
+
+		//HEAP memory
+		//C++ Heap memory is UNMANAGED (people must manage it)
+		//you MUST `delete` what you `new`
+		//if you don't, you leak memory
+		pPlaya = new Player("Alfred", 75);
+		Player* p2 = pPlaya;//copying the POINTER, not the object
+
+		//deallocate it...use delete
+		delete pPlaya;//the destructor gets called
+		pPlaya = nullptr;
+
+		//std::cout << p2->GetGamerTag() << "\n";
+		if(pPlaya != nullptr)
+			std::cout << pPlaya->GetGamerTag() << "\n";
+	}
 
     std::string hello = "Hello Week 3!";
     for (auto& ch : hello)

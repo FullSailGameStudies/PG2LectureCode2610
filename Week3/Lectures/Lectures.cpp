@@ -8,6 +8,7 @@
 #include "Color.h"
 #include "Pistol.h"
 #include "Knife.h"
+#include <Car.h>
 
 
 //overloads:
@@ -52,6 +53,12 @@ int main(int argc, char* args[])
 		//dynamic polymorphism (runtime)
 		inventory[i]->showMe();
 	}
+
+	Car myRide(2010, "Ford", "Expedition");
+	Car breven(2020, "Chevy", "Malibu");
+	std::cout << myRide.vehicleInformation() << "\n";
+	std::cout << breven.vehicleInformation() << "\n";
+	Car::reporting();
 
 
 	for (int i = 0; i < 10; i++)

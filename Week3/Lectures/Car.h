@@ -18,6 +18,10 @@ public:
 		mFuelLevel = mMaxFuelLevel;
 	}
 
+	//static function:
+	//	there is NO 'this' parameter
+	//  can ONLY access other static members
+	//  can NOT access non-static members
 	static void reporting()
 	{
 		//std::cout << "Model year: " << mModelYear << "\n"; //ERROR! cannot access non-static members
@@ -25,6 +29,11 @@ public:
 	}
 
 	//getter (accessor)
+	//non-static functions:
+	//	there is a hidden parameter called 'this'
+	//  'this' is a pointer to the object that the 
+	//	function was called on
+	//	can access BOTH non-static AND static members
 	int modelYear() const
 	{
 		return mModelYear;

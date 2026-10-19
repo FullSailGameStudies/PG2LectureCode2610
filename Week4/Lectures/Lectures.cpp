@@ -5,6 +5,7 @@
 #include "Input.h"
 #include <fstream> //fstream, ofstream, ifstream
 #include <sstream> //stringstream
+#include "Player.h"
 
 int main(int argc, char* args[])
 {
@@ -107,6 +108,43 @@ int main(int argc, char* args[])
         Console::Write(ch, (ConsoleColor)(rand() % 7 + 1));
     }
     std::cout << "\n";
+
+	Player p1;
+	p1.MoveDown();
+	p1.MoveDown();
+	p1.MoveLeft();
+	p1.MoveLeft();
+	p1.MoveLeft();
+	std::string saveFile = "player.csv";
+	std::ofstream playerFile(saveFile);
+	if (playerFile.is_open())
+	{
+		p1.SerializeCSV(playerFile, '\t');
+	}
+	else
+	{
+		std::cout << "Could not open " << saveFile << "\n";
+	}
+	playerFile.close();
+
+	std::ifstream playerLoadFile(saveFile);
+	if (playerLoadFile.is_open())
+	{
+		//read the line from the file
+		std::string line;
+		std::getline(playerLoadFile, line);
+
+		//create a player object using the line
+		Player loadedPlayer(line, '\t');
+		int px, py;
+		loadedPlayer.GetPosition(px, py);
+		std::cout << px << "," << py << "\n";
+	}
+	else
+	{
+		std::cout << "Could not open " << saveFile << "\n";
+	}
+	playerLoadFile.close();
 
 	int menuSelection = 0;
 	std::vector<std::string> menuOptions{

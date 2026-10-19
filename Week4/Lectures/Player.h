@@ -33,6 +33,14 @@ public:
 	}
 
 	void Info();
+
+	void SerializeCSV(std::ofstream& oFile, char delimiter) const;
+	void DeserializeCSV(const std::string& csvData, char delimiter);
+
+	Player(const std::string& csvData, char delimiter)
+	{
+		DeserializeCSV(csvData, delimiter);
+	}
 private:
 	int worldX, worldY;
 };
